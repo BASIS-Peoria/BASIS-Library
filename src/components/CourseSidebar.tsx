@@ -1,5 +1,5 @@
 import { useState, useCallback, useRef } from "react";
-import { PanelLeftClose, PanelLeft, Menu, ExternalLink } from "lucide-react";
+import { ChevronLeft, ChevronRight, Menu, ExternalLink } from "lucide-react";
 import { courseGroups } from "@/data/courses";
 import { cn } from "@/lib/utils";
 
@@ -46,7 +46,7 @@ const CourseSidebar = ({ selectedCategory, onSelectCategory }: CourseSidebarProp
   const toggleCollapse = () => {
     if (collapsed) {
       setCollapsed(false);
-      setWidth(prevWidth.current);
+      setWidth(prevWidth.current < DEFAULT_WIDTH ? DEFAULT_WIDTH : prevWidth.current);
     } else {
       prevWidth.current = width;
       setCollapsed(true);
@@ -61,43 +61,26 @@ const CourseSidebar = ({ selectedCategory, onSelectCategory }: CourseSidebarProp
 
   const effectiveWidth = collapsed ? MIN_WIDTH : width;
 
-  const navContent = (
-    <nav className="py-2 overflow-y-auto flex-1">
-      <div className="flex items-center">
-        <button
-          onClick={() => handleSelect(null)}
-          className={cn(
-            "flex-1 flex items-center gap-3 px-4 py-2.5 text-sm font-medium transition-colors",
-            selectedCategory === null
-              ? "bg-accent text-accent-foreground"
-              : "text-sidebar-foreground hover:bg-sidebar-accent"
-          )}
-        >
-          <span className="truncate">All Categories</span>
-        </button>
-        {!collapsed && (
-          <button
-            onClick={() => {
-              if (mobileOpen) {
-                setMobileOpen(false);
-              } else {
-                toggleCollapse();
-              }
-            }}
-            className="p-1.5 mr-2 rounded hover:bg-sidebar-accent transition-colors text-sidebar-foreground shrink-0"
-            aria-label="Collapse sidebar"
-          >
-            <PanelLeftClose className="w-4 h-4" />
-          </button>
+  const navLinks = (
+    <>
+      <button
+        onClick={() => handleSelect(null)}
+        className={cn(
+          "w-full flex items-center px-4 py-2.5 text-sm font-medium transition-colors",
+          selectedCategory === null
+            ? "bg-accent text-accent-foreground"
+            : "text-sidebar-foreground hover:bg-sidebar-accent"
         )}
-      </div>
+      >
+        <span className="truncate">All Categories</span>
+      </button>
       <div className="mx-3 my-1 border-t border-border" />
       {courseGroups.map((group) => (
         <button
           key={group.label}
           onClick={() => handleSelect(group.label)}
           className={cn(
-            "w-full flex items-center gap-3 px-4 py-2.5 text-sm font-medium transition-colors",
+            "w-full flex items-center px-4 py-2.5 text-sm font-medium transition-colors",
             selectedCategory === group.label
               ? "bg-accent text-accent-foreground"
               : "text-sidebar-foreground hover:bg-sidebar-accent"
@@ -116,14 +99,7 @@ const CourseSidebar = ({ selectedCategory, onSelectCategory }: CourseSidebarProp
         <span className="truncate">Request Material</span>
         <ExternalLink className="w-3.5 h-3.5 shrink-0 opacity-50" />
       </a>
-      <a
-        href="mailto:basispeorialibrary@gmail.com"
-        className="w-full flex items-center gap-3 px-4 py-2.5 text-sm font-medium text-sidebar-foreground hover:bg-sidebar-accent transition-colors"
-      >
-        <span className="truncate">Contribute</span>
-        <ExternalLink className="w-3.5 h-3.5 shrink-0 opacity-50" />
-      </a>
-    </nav>
+    </>
   );
 
   return (
@@ -143,28 +119,29 @@ const CourseSidebar = ({ selectedCategory, onSelectCategory }: CourseSidebarProp
             onClick={() => setMobileOpen(false)}
           />
           <aside className="md:hidden fixed inset-y-0 left-0 z-50 w-64 bg-background border-r border-border flex flex-col">
-            {navContent}
+            <nav className="py-2 overflow-y-auto flex-1">{navLinks}</nav>
           </aside>
         </>
       )}
 
       <aside
-        className="shrink-0 border-r border-border overflow-hidden bg-sidebar-background hidden md:flex flex-col relative select-none"
+        className="shrink-0 border-r border-border bg-sidebar-background hidden md:flex flex-col relative select-none"
         style={{ width: effectiveWidth }}
       >
         {collapsed ? (
-          <div className="flex items-center justify-center py-2">
-            <button
-              onClick={toggleCollapse}
-              className="p-1.5 rounded hover:bg-sidebar-accent transition-colors text-sidebar-foreground"
-              aria-label="Expand sidebar"
-            >
-              <PanelLeft className="w-4 h-4" />
-            </button>
-          </div>
+          <div className="flex-1 overflow-hidden" />
         ) : (
-          navContent
+          <nav className="py-2 overflow-y-auto overflow-x-hidden flex-1">{navLinks}</nav>
         )}
+
+        <button
+          type="button"
+          onClick={toggleCollapse}
+          className="absolute top-1/2 -translate-y-1/2 -right-3 z-20 flex h-6 w-6 items-center justify-center rounded-full border border-border bg-background text-muted-foreground hover:text-foreground transition-colors shadow-sm"
+          aria-label={collapsed ? "Expand sidebar" : "Collapse sidebar"}
+        >
+          {collapsed ? <ChevronRight className="w-3.5 h-3.5" /> : <ChevronLeft className="w-3.5 h-3.5" />}
+        </button>
 
         <div
           onMouseDown={onMouseDown}
