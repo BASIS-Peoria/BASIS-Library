@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Users, Mail } from "lucide-react";
+import { Users } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -15,7 +15,7 @@ const GitHubLink = () => {
   const [tab, setTab] = useState<AboutTab>("credits");
 
   return (
-    <div className="fixed bottom-4 right-4 z-50 flex items-center gap-2">
+    <div className="fixed bottom-4 right-4 z-50">
       <Dialog
         onOpenChange={(open) => {
           if (open) setTab("credits");
@@ -98,14 +98,6 @@ const GitHubLink = () => {
           )}
         </DialogContent>
       </Dialog>
-      <a
-        href="mailto:basispeorialibrary@gmail.com"
-        className="p-2 rounded-full bg-muted/80 backdrop-blur-sm border border-border text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
-        aria-label="Contribute"
-        title="Contribute"
-      >
-        <Mail className="w-5 h-5" />
-      </a>
     </div>
   );
 };

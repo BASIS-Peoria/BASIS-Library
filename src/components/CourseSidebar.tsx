@@ -1,5 +1,5 @@
 import { useState, useCallback, useRef } from "react";
-import { ChevronLeft, ChevronRight, Menu, ExternalLink } from "lucide-react";
+import { ChevronLeft, ChevronRight, Menu, ExternalLink, X } from "lucide-react";
 import { courseGroups } from "@/data/courses";
 import { cn } from "@/lib/utils";
 
@@ -8,7 +8,7 @@ interface CourseSidebarProps {
   onSelectCategory: (label: string | null) => void;
 }
 
-const MIN_WIDTH = 48;
+const MIN_WIDTH = 44;
 const DEFAULT_WIDTH = 220;
 const MAX_WIDTH = 360;
 
@@ -61,7 +61,7 @@ const CourseSidebar = ({ selectedCategory, onSelectCategory }: CourseSidebarProp
 
   const effectiveWidth = collapsed ? MIN_WIDTH : width;
 
-  const navLinks = (
+  const navItems = (
     <>
       <button
         onClick={() => handleSelect(null)}
@@ -99,6 +99,13 @@ const CourseSidebar = ({ selectedCategory, onSelectCategory }: CourseSidebarProp
         <span className="truncate">Request Material</span>
         <ExternalLink className="w-3.5 h-3.5 shrink-0 opacity-50" />
       </a>
+      <a
+        href="mailto:basispeorialibrary@gmail.com"
+        className="w-full flex items-center gap-3 px-4 py-2.5 text-sm font-medium text-sidebar-foreground hover:bg-sidebar-accent transition-colors"
+      >
+        <span className="truncate">Contribute</span>
+        <ExternalLink className="w-3.5 h-3.5 shrink-0 opacity-50" />
+      </a>
     </>
   );
 
@@ -119,29 +126,46 @@ const CourseSidebar = ({ selectedCategory, onSelectCategory }: CourseSidebarProp
             onClick={() => setMobileOpen(false)}
           />
           <aside className="md:hidden fixed inset-y-0 left-0 z-50 w-64 bg-background border-r border-border flex flex-col">
-            <nav className="py-2 overflow-y-auto flex-1">{navLinks}</nav>
+            <div className="flex items-center justify-end px-2 py-2">
+              <button
+                onClick={() => setMobileOpen(false)}
+                className="p-1.5 text-muted-foreground hover:text-foreground transition-colors"
+                aria-label="Close sidebar"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+            <nav className="py-1 overflow-y-auto flex-1">{navItems}</nav>
           </aside>
         </>
       )}
 
       <aside
-        className="shrink-0 border-r border-border bg-sidebar-background hidden md:flex flex-col relative select-none"
+        className="shrink-0 border-r border-border overflow-hidden bg-sidebar-background hidden md:flex flex-col relative select-none group/sidebar"
         style={{ width: effectiveWidth }}
       >
         {collapsed ? (
-          <div className="flex-1 overflow-hidden" />
+          <div className="flex flex-1 items-start justify-center pt-3">
+            <button
+              onClick={toggleCollapse}
+              className="p-1 text-muted-foreground/70 hover:text-foreground transition-colors"
+              aria-label="Expand sidebar"
+            >
+              <ChevronRight className="w-4 h-4" strokeWidth={1.75} />
+            </button>
+          </div>
         ) : (
-          <nav className="py-2 overflow-y-auto overflow-x-hidden flex-1">{navLinks}</nav>
+          <>
+            <nav className="py-2 overflow-y-auto flex-1 pr-3">{navItems}</nav>
+            <button
+              onClick={toggleCollapse}
+              className="absolute top-2.5 right-1 z-20 p-0.5 text-muted-foreground/50 hover:text-foreground opacity-0 group-hover/sidebar:opacity-100 focus:opacity-100 transition-opacity"
+              aria-label="Collapse sidebar"
+            >
+              <ChevronLeft className="w-3.5 h-3.5" strokeWidth={1.75} />
+            </button>
+          </>
         )}
-
-        <button
-          type="button"
-          onClick={toggleCollapse}
-          className="absolute top-1/2 -translate-y-1/2 -right-3 z-20 flex h-6 w-6 items-center justify-center rounded-full border border-border bg-background text-muted-foreground hover:text-foreground transition-colors shadow-sm"
-          aria-label={collapsed ? "Expand sidebar" : "Collapse sidebar"}
-        >
-          {collapsed ? <ChevronRight className="w-3.5 h-3.5" /> : <ChevronLeft className="w-3.5 h-3.5" />}
-        </button>
 
         <div
           onMouseDown={onMouseDown}
