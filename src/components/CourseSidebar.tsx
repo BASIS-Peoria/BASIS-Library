@@ -141,31 +141,24 @@ const CourseSidebar = ({ selectedCategory, onSelectCategory }: CourseSidebarProp
       )}
 
       <aside
-        className="shrink-0 border-r border-border overflow-hidden bg-sidebar-background hidden md:flex flex-col relative select-none group/sidebar"
+        className="shrink-0 border-r border-border overflow-hidden bg-sidebar-background hidden md:flex flex-col relative select-none"
         style={{ width: effectiveWidth }}
       >
-        {collapsed ? (
-          <div className="flex flex-1 items-start justify-center pt-3">
-            <button
-              onClick={toggleCollapse}
-              className="p-1 text-muted-foreground/70 hover:text-foreground transition-colors"
-              aria-label="Expand sidebar"
-            >
-              <ChevronRight className="w-4 h-4" strokeWidth={1.75} />
-            </button>
-          </div>
-        ) : (
-          <>
-            <nav className="py-2 overflow-y-auto flex-1 pr-3">{navItems}</nav>
-            <button
-              onClick={toggleCollapse}
-              className="absolute top-2.5 right-1 z-20 p-0.5 text-muted-foreground/50 hover:text-foreground opacity-0 group-hover/sidebar:opacity-100 focus:opacity-100 transition-opacity"
-              aria-label="Collapse sidebar"
-            >
-              <ChevronLeft className="w-3.5 h-3.5" strokeWidth={1.75} />
-            </button>
-          </>
+        {!collapsed && (
+          <nav className="py-2 overflow-y-auto flex-1 pr-3">{navItems}</nav>
         )}
+
+        <button
+          onClick={toggleCollapse}
+          className="absolute top-2.5 right-1 z-20 p-0.5 text-muted-foreground/70 hover:text-foreground transition-colors"
+          aria-label={collapsed ? "Expand sidebar" : "Collapse sidebar"}
+        >
+          {collapsed ? (
+            <ChevronRight className="w-3.5 h-3.5" strokeWidth={1.75} />
+          ) : (
+            <ChevronLeft className="w-3.5 h-3.5" strokeWidth={1.75} />
+          )}
+        </button>
 
         <div
           onMouseDown={onMouseDown}
