@@ -119,6 +119,8 @@ export const courseGroups: CourseGroup[] = [
           { id: "physc-5steps-2024", title: "[2024] AP Physics C - 5 Steps to a 5", link: "https://drive.google.com/file/d/1lS9a_MwHHkt_yj1dffe2Ze_L9vKQQZXa/view?usp=sharing" },
           { id: "physc-barrons-2024", title: "[2024] AP Physics C - Barron's Premium", link: "https://drive.google.com/file/d/1vWzCOxr637e6oKgmq-OhSizPD-zYVQkB/view?usp=sharing" },
           { id: "physc-princeton-2023", title: "[2023] AP Physics C - Princeton Review", link: "https://drive.google.com/file/d/1kzoj2kAJSj_HBQwXIkdrIelXDm-o19JY/view?usp=sharing" },
+          { id: "physc-fundamentals-2007", title: "[2007] AP Physics C - Fundamentals of Physics 10th Edition", link: "https://drive.google.com/file/d/1X1aemNMHiS6K-PMCvrP6Yhjrl-omW5fU/view?usp=sharing" },
+          { id: "physc-principles-2010", title: "[2010] AP Physics C - Physics: Principles with Applications with MasteringPhysics with Get Ready for Physics (6th Edition)", link: "https://drive.google.com/file/d/1Qf26d8GYuw6h2OehFI5fVkw27jJG0Got/view?usp=sharing" },
         ],
         notes: [],
         collegeboard: [
