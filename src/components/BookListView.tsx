@@ -162,9 +162,9 @@ const BookListView = ({ course, searchResults, searchQuery }: BookListViewProps)
           </div>
         )}
 
-        {(isSearch || course) && items.length === 0 && (
+        {isSearch && items.length === 0 && (
           <div className="flex items-center justify-center h-64 text-muted-foreground text-sm">
-            {isSearch ? "No results found." : "No items added yet."}
+            No results found.
           </div>
         )}
 
@@ -181,76 +181,68 @@ const BookListView = ({ course, searchResults, searchQuery }: BookListViewProps)
 
         {!isSearch && course && (
           <>
-            {showBooks && bookItems.length > 0 && (
+            {showBooks && (
               <div>
                 <SectionHeader title="Books" count={bookItems.length} />
-                {bookItems.map((entry) => (
-                  <ResourceRow key={entry.item.id} item={entry.item} isSelected={selectedIds.has(entry.item.id)} onToggle={toggleOne} onRowClick={handleRowClick} />
-                ))}
+                {bookItems.length > 0 ? (
+                  bookItems.map((entry) => (
+                    <ResourceRow key={entry.item.id} item={entry.item} isSelected={selectedIds.has(entry.item.id)} onToggle={toggleOne} onRowClick={handleRowClick} />
+                  ))
+                ) : (
+                  <div className="px-4 py-6 text-sm text-muted-foreground text-center">No books yet.</div>
+                )}
               </div>
             )}
 
-            {showNotes && noteItems.length > 0 && (
+            {showNotes && (
               <div>
                 <SectionHeader title="Student Notes" count={noteItems.length} />
-                {noteItems.map((entry) => (
-                  <ResourceRow key={entry.item.id} item={entry.item} isSelected={selectedIds.has(entry.item.id)} onToggle={toggleOne} onRowClick={handleRowClick} />
-                ))}
+                {noteItems.length > 0 ? (
+                  noteItems.map((entry) => (
+                    <ResourceRow key={entry.item.id} item={entry.item} isSelected={selectedIds.has(entry.item.id)} onToggle={toggleOne} onRowClick={handleRowClick} />
+                  ))
+                ) : (
+                  <div className="px-4 py-6 text-sm text-muted-foreground text-center">No student notes yet.</div>
+                )}
               </div>
             )}
 
-            {showNotes && noteItems.length === 0 && bookItems.length > 0 && (
-              <div>
-                <SectionHeader title="Student Notes" count={0} />
-                <div className="px-4 py-6 text-sm text-muted-foreground text-center">No student notes yet.</div>
-              </div>
-            )}
-
-            {showCB && cbItems.length > 0 && (
+            {showCB && (
               <div>
                 <SectionHeader title="College Board Materials" count={cbItems.length} />
-                {cbItems.map((entry) => (
-                  <ResourceRow key={entry.item.id} item={entry.item} isSelected={selectedIds.has(entry.item.id)} onToggle={toggleOne} onRowClick={handleRowClick} />
-                ))}
+                {cbItems.length > 0 ? (
+                  cbItems.map((entry) => (
+                    <ResourceRow key={entry.item.id} item={entry.item} isSelected={selectedIds.has(entry.item.id)} onToggle={toggleOne} onRowClick={handleRowClick} />
+                  ))
+                ) : (
+                  <div className="px-4 py-6 text-sm text-muted-foreground text-center">No College Board materials yet.</div>
+                )}
               </div>
             )}
 
-            {showCB && cbItems.length === 0 && (bookItems.length > 0 || noteItems.length > 0) && (
-              <div>
-                <SectionHeader title="College Board Materials" count={0} />
-                <div className="px-4 py-6 text-sm text-muted-foreground text-center">No College Board materials yet.</div>
-              </div>
-            )}
-
-            {showVideos && videoItems.length > 0 && (
+            {showVideos && (
               <div>
                 <SectionHeader title="Helpful Videos" count={videoItems.length} />
-                {videoItems.map((entry) => (
-                  <ResourceRow key={entry.item.id} item={entry.item} isSelected={selectedIds.has(entry.item.id)} onToggle={toggleOne} onRowClick={handleRowClick} />
-                ))}
+                {videoItems.length > 0 ? (
+                  videoItems.map((entry) => (
+                    <ResourceRow key={entry.item.id} item={entry.item} isSelected={selectedIds.has(entry.item.id)} onToggle={toggleOne} onRowClick={handleRowClick} />
+                  ))
+                ) : (
+                  <div className="px-4 py-6 text-sm text-muted-foreground text-center">No helpful videos yet.</div>
+                )}
               </div>
             )}
 
-            {showVideos && videoItems.length === 0 && bookItems.length > 0 && (
-              <div>
-                <SectionHeader title="Helpful Videos" count={0} />
-                <div className="px-4 py-6 text-sm text-muted-foreground text-center">No helpful videos yet.</div>
-              </div>
-            )}
-
-            {showWebsites && websiteItems.length > 0 && (
+            {showWebsites && (
               <div>
                 <SectionHeader title="Helpful Websites" count={websiteItems.length} />
-                {websiteItems.map((entry) => (
-                  <ResourceRow key={entry.item.id} item={entry.item} isSelected={selectedIds.has(entry.item.id)} onToggle={toggleOne} onRowClick={handleRowClick} />
-                ))}
-              </div>
-            )}
-
-            {showWebsites && websiteItems.length === 0 && bookItems.length > 0 && (
-              <div>
-                <SectionHeader title="Helpful Websites" count={0} />
-                <div className="px-4 py-6 text-sm text-muted-foreground text-center">No helpful websites yet.</div>
+                {websiteItems.length > 0 ? (
+                  websiteItems.map((entry) => (
+                    <ResourceRow key={entry.item.id} item={entry.item} isSelected={selectedIds.has(entry.item.id)} onToggle={toggleOne} onRowClick={handleRowClick} />
+                  ))
+                ) : (
+                  <div className="px-4 py-6 text-sm text-muted-foreground text-center">No helpful websites yet.</div>
+                )}
               </div>
             )}
           </>
