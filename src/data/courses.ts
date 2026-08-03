@@ -853,7 +853,11 @@ export const courseGroups: CourseGroup[] = [
         id: "multivariable-calculus",
         name: "Multivariable Calculus",
         showCollegeBoard: false,
-        books: [],
+        books: [
+          { id: "mvc-book-stewart-2020", title: "[2020] Multivariable Calculus - Calculus Early Transcendentals 9th Edition James Stewart", link: "https://drive.google.com/file/d/1QsG3RmAgFFXLiQF8P_ymhwJZH04DBWiD/view?usp=sharing" },
+          { id: "mvc-book-vector-2011", title: "[2011] Multivariable Calculus - Vector Analysis", link: "https://drive.google.com/file/d/1LQvt8RbI84LwRm-8Yv6mN8BUOyiXkN5w/view?usp=sharing" },
+          { id: "mvc-book-early-trans-2020", title: "[2020] Multivariable Calculus - Calculus Early Transcendentals", link: "https://drive.google.com/file/d/1SNM3Gz7eWmFCuglPUnDX0LpHojYme3S_/view?usp=sharing" },
+        ],
         notes: [],
         collegeboard: [],
         videos: [],
