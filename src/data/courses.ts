@@ -822,7 +822,16 @@ export const courseGroups: CourseGroup[] = [
         ],
       },
       {
-        id: "ap-research", name: "AP Research", books: [], notes: [],
+        id: "ap-research", name: "AP Research",
+        books: [
+          { id: "research-book-qualitative-2014", title: "[2014] AP Research - An Introduction to Qualitative Research", link: "https://drive.google.com/file/d/1MUIC88BCLghEgVXIdhaAf7aA602XTumW/view" },
+          { id: "research-book-bedford-2023", title: "[2023] AP Research - The Bedford Researcher", link: "https://drive.google.com/file/d/1oZBN_-quAh6G3xIqRx4rELyqrloVggTF/view" },
+          { id: "research-book-craft-2008", title: "[2008] AP Research - The Craft of Research, Third Edition", link: "https://drive.google.com/file/d/1ufG4wPPC7PHVFpReMFRiE9FbNkwZEWeX/view" },
+          { id: "research-book-practical-2016", title: "[2016] AP Research - Practical Research: Planning and Design", link: "https://drive.google.com/file/d/1Xxx6pPKrgNoWWFXlTeLXE4DhRxp_p_pQ/view" },
+          { id: "research-book-methods-2013", title: "[2013] AP Research - Research Methods, Design, and Analysis", link: "https://drive.google.com/file/d/1qeQQbqaalGSYIa1vfCsy2G_tj87RPAlg/view" },
+          { id: "research-book-begins-2022", title: "[2022] AP Research - Where Research Begins: Choosing a Research Project That Matters to You (and the World)", link: "https://drive.google.com/file/d/1Y4WtzLIuys5RqxMey-UCMCjkDWTlz0rf/view" },
+        ],
+        notes: [],
         collegeboard: [
           { id: "cb-research-sg-2025", title: "[2025] AP Research - Scoring Guidelines", link: "https://apcentral.collegeboard.org/media/pdf/ap25-sg-research-academic-paper.pdf" },
           { id: "cb-research-sg-2024", title: "[2024] AP Research - Scoring Guidelines", link: "https://apcentral.collegeboard.org/media/pdf/ap24-sg-research-academic-paper.pdf" },
