@@ -18,6 +18,7 @@ interface FilterToolbarProps {
   itemCount: number;
   onToggleAll: () => void;
   onOpenSelected: () => void;
+  showCollegeBoard?: boolean;
 }
 
 const FilterToolbar = ({
@@ -31,6 +32,7 @@ const FilterToolbar = ({
   itemCount,
   onToggleAll,
   onOpenSelected,
+  showCollegeBoard = true,
 }: FilterToolbarProps) => (
   <div className="flex items-center gap-3 px-4 py-2 border-b border-border flex-wrap">
     <button
@@ -58,7 +60,7 @@ const FilterToolbar = ({
           <SelectItem value="all">All types</SelectItem>
           <SelectItem value="book">Books</SelectItem>
           <SelectItem value="note">Notes</SelectItem>
-          <SelectItem value="collegeboard">College Board</SelectItem>
+          {showCollegeBoard && <SelectItem value="collegeboard">College Board</SelectItem>}
           <SelectItem value="video">Videos</SelectItem>
           <SelectItem value="website">Websites</SelectItem>
         </SelectContent>

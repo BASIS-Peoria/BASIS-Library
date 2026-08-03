@@ -128,9 +128,10 @@ const BookListView = ({ course, searchResults, searchQuery }: BookListViewProps)
   const videoItems = useMemo(() => items.filter((i) => i.item.type === "video"), [items]);
   const websiteItems = useMemo(() => items.filter((i) => i.item.type === "website"), [items]);
 
+  const supportsCollegeBoard = course?.showCollegeBoard !== false;
   const showBooks = typeFilter === "all" || typeFilter === "book";
   const showNotes = typeFilter === "all" || typeFilter === "note";
-  const showCB = typeFilter === "all" || typeFilter === "collegeboard";
+  const showCB = supportsCollegeBoard && (typeFilter === "all" || typeFilter === "collegeboard");
   const showVideos = typeFilter === "all" || typeFilter === "video";
   const showWebsites = typeFilter === "all" || typeFilter === "website";
 
@@ -150,6 +151,7 @@ const BookListView = ({ course, searchResults, searchQuery }: BookListViewProps)
           itemCount={items.length}
           onToggleAll={toggleAll}
           onOpenSelected={openSelected}
+          showCollegeBoard={supportsCollegeBoard}
         />
       )}
 

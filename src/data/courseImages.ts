@@ -27,7 +27,7 @@ import AP_UnitedStatesHistory from "@/assets/ClassroomImages/AP_UnitedStatesHist
 import AP_WorldHistoryModern from "@/assets/ClassroomImages/AP_WorldHistoryModern.png";
 
 export interface CourseImageData {
-  image: string;
+  image?: string;
   color: string;
 }
 
@@ -58,10 +58,12 @@ export const courseImageMap: Record<string, CourseImageData> = {
   "ap-latin": { image: AP_Latin, color: "#52004a" },
   "ap-seminar": { image: AP_Seminar, color: "#0077c8" },
   "ap-research": { image: AP_Research, color: "#4d6ed0" },
+  "multivariable-calculus": { color: "#003c64" },
 };
 
 export function preloadCourseImages() {
   Object.values(courseImageMap).forEach(({ image }) => {
+    if (!image) return;
     const img = new Image();
     img.src = image;
   });

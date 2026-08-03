@@ -38,6 +38,8 @@ export interface Course {
   collegeboard: CollegeBoardMaterial[];
   videos: Video[];
   websites: Website[];
+  /** When false, omit College Board Materials (non-AP Capstones). */
+  showCollegeBoard?: boolean;
 }
 
 export interface CourseGroup {
@@ -841,6 +843,21 @@ export const courseGroups: CourseGroup[] = [
           { id: "research-web-teacher", title: "Teacher Recommended Resources", link: "https://apcentral.collegeboard.org/courses/ap-research/classroom-resources/teacher-recommended-resources" },
           { id: "research-web-fiveable", title: "Fiveable", link: "https://library.fiveable.me/ap-research" },
         ],
+      },
+    ],
+  },
+  {
+    label: "Capstones",
+    courses: [
+      {
+        id: "multivariable-calculus",
+        name: "Multivariable Calculus",
+        showCollegeBoard: false,
+        books: [],
+        notes: [],
+        collegeboard: [],
+        videos: [],
+        websites: [],
       },
     ],
   },
