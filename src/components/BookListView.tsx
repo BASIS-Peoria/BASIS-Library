@@ -231,12 +231,26 @@ const BookListView = ({ course, searchResults, searchQuery }: BookListViewProps)
               </div>
             )}
 
+            {showVideos && videoItems.length === 0 && bookItems.length > 0 && (
+              <div>
+                <SectionHeader title="Helpful Videos" count={0} />
+                <div className="px-4 py-6 text-sm text-muted-foreground text-center">No helpful videos yet.</div>
+              </div>
+            )}
+
             {showWebsites && websiteItems.length > 0 && (
               <div>
                 <SectionHeader title="Helpful Websites" count={websiteItems.length} />
                 {websiteItems.map((entry) => (
                   <ResourceRow key={entry.item.id} item={entry.item} isSelected={selectedIds.has(entry.item.id)} onToggle={toggleOne} onRowClick={handleRowClick} />
                 ))}
+              </div>
+            )}
+
+            {showWebsites && websiteItems.length === 0 && bookItems.length > 0 && (
+              <div>
+                <SectionHeader title="Helpful Websites" count={0} />
+                <div className="px-4 py-6 text-sm text-muted-foreground text-center">No helpful websites yet.</div>
               </div>
             )}
           </>
