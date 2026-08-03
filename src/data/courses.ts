@@ -153,8 +153,6 @@ export const courseGroups: CourseGroup[] = [
           { id: "physc-web-mech-extra", title: "Extra Resources (Mechanics)", link: "https://shagun-baranwal2.notion.site/AP-Physics-Mechanics-Resources-c716df7b1f4140c18b6c9d0dc27deba9" },
           { id: "physc-web-mech-flipping", title: "Flipping Physics (Mechanics)", link: "https://www.flippingphysics.com/ap-physics-c.html" },
           { id: "physc-web-apclassroom", title: "AP Classroom", link: "https://www.collegeboard.com/student/testing/ap/sub_physb.html" },
-          { id: "physc-web-mechanical-universe", title: "The Mechanical Universe", link: "https://www.learner.org/resources/seriese42.html" },
-          { id: "physc-web-physicsclassroom", title: "The Physics Classroom", link: "https://www.thephysicsclassroom.com" },
           { id: "physc-web-phet", title: "PhET Interactive Simulations", link: "https://phet.colorado.edu/" },
         ],
       },
