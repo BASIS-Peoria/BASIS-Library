@@ -18,26 +18,28 @@ const ExamCountdown = ({ courseId }: ExamCountdownProps) => {
   const isPortfolio = courseId === "ap-research";
 
   return (
-    <div className="px-4 py-2 text-sm text-muted-foreground border-b border-border flex items-center justify-between gap-4">
-      <div className="min-w-0 truncate">
-        {hasExam && (
-          <>
-            <span className="font-medium text-foreground">
-              {isPast
-                ? isPortfolio
-                  ? "Portfolio deadline has passed"
-                  : "Exam has passed"
-                : isToday
-                ? isPortfolio
-                  ? "Portfolio deadline is TODAY!"
-                  : "Exam is TODAY!"
-                : `${days} day${days === 1 ? "" : "s"} until ${isPortfolio ? "portfolio deadline" : "exam"}`}
-            </span>
-            <span className="mx-1.5">·</span>
-            <span>{label}</span>
-          </>
-        )}
-      </div>
+    <div
+      className={`px-4 py-2 text-sm text-muted-foreground border-b border-border flex items-center gap-4 ${
+        hasExam ? "justify-between" : "justify-end"
+      }`}
+    >
+      {hasExam && (
+        <div className="min-w-0 truncate">
+          <span className="font-medium text-foreground">
+            {isPast
+              ? isPortfolio
+                ? "Portfolio deadline has passed"
+                : "Exam has passed"
+              : isToday
+              ? isPortfolio
+                ? "Portfolio deadline is TODAY!"
+                : "Exam is TODAY!"
+              : `${days} day${days === 1 ? "" : "s"} until ${isPortfolio ? "portfolio deadline" : "exam"}`}
+          </span>
+          <span className="mx-1.5">·</span>
+          <span>{label}</span>
+        </div>
+      )}
       {email && (
         <a
           href={`mailto:${email}`}

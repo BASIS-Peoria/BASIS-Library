@@ -33,6 +33,7 @@ export const teacherEmails: Record<string, string> = {
   "ap-computer-science-principles": "spencer.kwit@basised.com",
   "ap-physics-2": "spencer.kwit@basised.com",
   "ap-physics-c": "spencer.kwit@basised.com",
+  "multivariable-calculus": "spencer.kwit@basised.com",
 
   "ap-calculus-ab": "tim.winzeler@basised.com",
   "ap-statistics": "tim.winzeler@basised.com",
