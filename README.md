@@ -28,20 +28,6 @@ Education and knowledge ought to be free. Access to learning materials should ne
 
 If a textbook can help a student understand the world a little better, nothing should stand between them and that knowledge.
 
-
-## Developers
-
-<table>
-  <tr>
-    <td align="center"><strong>Lucas Z</strong></td>
-    <td align="center"><strong>Justin N</strong></td>
-    <td align="center"><strong>Anish K</strong></td>
-    <td align="center"><strong>Richard B</strong></td>
-  </tr>
-</table>
-
-
-
 ## License
 
 This project is open source and available under the [MIT License](LICENSE).
