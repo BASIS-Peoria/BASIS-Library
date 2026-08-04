@@ -64,21 +64,22 @@ const GitHubLink = () => {
           {tab === "credits" ? (
             <div className="space-y-6 pt-2">
               <div>
-                <h3 className="text-sm font-semibold text-foreground mb-2">Contributors</h3>
+                <h3 className="text-sm font-semibold text-foreground mb-2">Code Contributors</h3>
                 <div className="mx-3 mb-2 border-t border-border" />
                 <ul className="grid grid-cols-2 gap-x-4 gap-y-1 text-sm text-muted-foreground">
                   <li>Lucas Z</li>
-                  <li>Justin N</li>
-                  <li>Anish K</li>
-                  <li>Richard B</li>
                 </ul>
               </div>
               <div>
                 <h3 className="text-sm font-semibold text-foreground mb-2">Student Contributors</h3>
                 <div className="mx-3 mb-2 border-t border-border" />
                 <ul className="grid grid-cols-2 gap-x-4 gap-y-1 text-sm text-muted-foreground">
+                  <li>Justin N</li>
+                  <li>Anish K</li>
+                  <li>Richard B</li>
                   <li>Hong-Tam L</li>
                   <li>Krystal N</li>
+                  <li>Jacob R</li>
                 </ul>
               </div>
               <p className="text-xs text-muted-foreground text-center pt-2">Thank you for all your help! ❤️</p>
