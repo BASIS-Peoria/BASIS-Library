@@ -42,7 +42,10 @@ const ExamCountdown = ({ courseId }: ExamCountdownProps) => {
       )}
       {email && (
         <a
-          href={`mailto:${email}`}
+          href={`https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(email)}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          title={`Email ${email} via Gmail`}
           className="shrink-0 text-muted-foreground hover:text-foreground transition-colors"
         >
           {email}
