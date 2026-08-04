@@ -17,15 +17,15 @@ const CourseCard = ({ course, onSelect }: CourseCardProps) => {
       style={{ backgroundColor: bgColor }}
       onClick={() => onSelect(course.id)}
     >
-      {bannerSrc && (
-        <div className="w-full aspect-[16/7] overflow-hidden">
+      <div className="w-full aspect-[16/7] overflow-hidden">
+        {bannerSrc && (
           <img
             src={bannerSrc}
             alt={course.name}
             className="w-full h-full object-cover"
           />
-        </div>
-      )}
+        )}
+      </div>
 
       <div className="p-4 flex flex-col gap-2 flex-1">
         <h3 className="text-white font-semibold text-sm leading-tight">

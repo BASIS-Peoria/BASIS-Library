@@ -144,21 +144,74 @@ const CourseSidebar = ({ selectedCategory, onSelectCategory }: CourseSidebarProp
         className="shrink-0 border-r border-border overflow-hidden bg-sidebar-background hidden md:flex flex-col relative select-none"
         style={{ width: effectiveWidth }}
       >
-        {!collapsed && (
-          <nav className="py-2 overflow-y-auto flex-1 pr-3">{navItems}</nav>
+        {!collapsed ? (
+          <nav className="py-2 overflow-y-auto flex-1">
+            <div
+              className={cn(
+                "w-full flex items-center transition-colors",
+                selectedCategory === null
+                  ? "bg-accent text-accent-foreground"
+                  : "text-sidebar-foreground hover:bg-sidebar-accent"
+              )}
+            >
+              <button
+                onClick={() => handleSelect(null)}
+                className="flex-1 min-w-0 flex items-center px-4 py-2.5 text-sm font-medium text-left"
+              >
+                <span className="truncate">All Categories</span>
+              </button>
+              <button
+                onClick={toggleCollapse}
+                className="shrink-0 mr-1.5 p-1 text-foreground/80 hover:text-foreground transition-colors"
+                aria-label="Collapse sidebar"
+              >
+                <ChevronLeft className="w-4 h-4" strokeWidth={2.75} />
+              </button>
+            </div>
+            <div className="mx-3 my-1 border-t border-border" />
+            {courseGroups.map((group) => (
+              <button
+                key={group.label}
+                onClick={() => handleSelect(group.label)}
+                className={cn(
+                  "w-full flex items-center px-4 py-2.5 text-sm font-medium transition-colors",
+                  selectedCategory === group.label
+                    ? "bg-accent text-accent-foreground"
+                    : "text-sidebar-foreground hover:bg-sidebar-accent"
+                )}
+              >
+                <span className="truncate">{group.label}</span>
+              </button>
+            ))}
+            <div className="mx-3 my-1 border-t border-border" />
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLSfS3PyUTXfxg8n0C0EVDxv2MS8W_cZIBFue4wcLK4rSuixKaw/viewform?usp=header"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full flex items-center gap-3 px-4 py-2.5 text-sm font-medium text-sidebar-foreground hover:bg-sidebar-accent transition-colors"
+            >
+              <span className="truncate">Request Material</span>
+              <ExternalLink className="w-3.5 h-3.5 shrink-0 opacity-50" />
+            </a>
+            <a
+              href="mailto:basispeorialibrary@gmail.com"
+              className="w-full flex items-center gap-3 px-4 py-2.5 text-sm font-medium text-sidebar-foreground hover:bg-sidebar-accent transition-colors"
+            >
+              <span className="truncate">Contribute</span>
+              <ExternalLink className="w-3.5 h-3.5 shrink-0 opacity-50" />
+            </a>
+          </nav>
+        ) : (
+          <div className="pt-2 flex justify-center">
+            <button
+              onClick={toggleCollapse}
+              className="p-1 py-2.5 text-foreground/80 hover:text-foreground transition-colors"
+              aria-label="Expand sidebar"
+            >
+              <ChevronRight className="w-4 h-4" strokeWidth={2.75} />
+            </button>
+          </div>
         )}
-
-        <button
-          onClick={toggleCollapse}
-          className="absolute top-2.5 right-1 z-20 p-0.5 text-muted-foreground/70 hover:text-foreground transition-colors"
-          aria-label={collapsed ? "Expand sidebar" : "Collapse sidebar"}
-        >
-          {collapsed ? (
-            <ChevronRight className="w-3.5 h-3.5" strokeWidth={1.75} />
-          ) : (
-            <ChevronLeft className="w-3.5 h-3.5" strokeWidth={1.75} />
-          )}
-        </button>
 
         <div
           onMouseDown={onMouseDown}
