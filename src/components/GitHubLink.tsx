@@ -66,7 +66,7 @@ const GitHubLink = () => {
               <div>
                 <h3 className="text-sm font-semibold text-foreground mb-2">Contributors</h3>
                 <div className="mx-3 mb-2 border-t border-border" />
-                <ul className="space-y-1 text-sm text-muted-foreground">
+                <ul className="grid grid-cols-2 gap-x-4 gap-y-1 text-sm text-muted-foreground">
                   <li>Lucas Z</li>
                   <li>Justin N</li>
                   <li>Anish K</li>
@@ -76,7 +76,7 @@ const GitHubLink = () => {
               <div>
                 <h3 className="text-sm font-semibold text-foreground mb-2">Student Contributors</h3>
                 <div className="mx-3 mb-2 border-t border-border" />
-                <ul className="space-y-1 text-sm text-muted-foreground">
+                <ul className="grid grid-cols-2 gap-x-4 gap-y-1 text-sm text-muted-foreground">
                   <li>Hong-Tam L</li>
                   <li>Krystal N</li>
                 </ul>
